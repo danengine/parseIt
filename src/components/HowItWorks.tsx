@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface HowItWorksProps {
   isInView: boolean;
@@ -6,13 +6,15 @@ interface HowItWorksProps {
 
 const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
   const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+  const hasAutoOpened = useRef(false);
 
   useEffect(() => {
-    if (isInView && activeAccordion === null) {
-      // Auto-open first accordion when section comes into view
+    if (isInView && !hasAutoOpened.current) {
+      // Auto-open first accordion when section comes into view (only once)
       setActiveAccordion(1);
+      hasAutoOpened.current = true;
     }
-  }, [isInView, activeAccordion]);
+  }, [isInView]);
 
   return (
     <section className="relative z-10 py-8 md:py-16 mt-20 md:mt-40 px-4 md:px-0" data-section="how-it-works">
@@ -28,118 +30,80 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
         }}
       ></div>
 
-      <div className="max-w-4xl mx-auto relative z-10 px-4 md:px-0">
-        {/* Marquee Header */}
-        <div
-          className={`overflow-hidden mb-12 ${
-            isInView ? "animate-fade-in" : "opacity-0"
-          }`}
-          style={{ animationDelay: "0.2s" }}
-        >
-          <div className="flex animate-marquee whitespace-nowrap">
-            {/* First set */}
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
-              style={{
-                fontFamily: "DM Mono, monospace",
-                backgroundColor: "#14B984",
-                color: "black",
-              }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-            {/* Duplicate set for seamless loop */}
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
-              style={{
-                fontFamily: "DM Mono, monospace",
-                backgroundColor: "#14B984",
-                color: "black",
-              }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              •
-            </span>
-            <span
-                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
-              style={{ fontFamily: "DM Mono, monospace", color: "white" }}
-            >
-              HOW IT WORKS
-            </span>
-          </div>
+      {/* Marquee Header - Full Width */}
+      <div
+        className={`overflow-hidden mb-12 ${
+          isInView ? "animate-fade-in" : "opacity-0"
+        }`}
+        style={{ animationDelay: "0.2s" }}
+      >
+        <div className="flex animate-marquee whitespace-nowrap">
+          {/* First set */}
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span
+            className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
+            style={{
+              fontFamily: "DM Mono, monospace",
+              backgroundColor: "#14B984",
+              color: "black",
+            }}
+          >
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+          
+          {/* Duplicate set for seamless loop */}
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span
+            className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
+            style={{
+              fontFamily: "DM Mono, monospace",
+              backgroundColor: "#14B984",
+              color: "black",
+            }}
+          >
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            •
+          </span>
+          <span className="text-2xl md:text-4xl font-bold mr-4 md:mr-8" style={{ fontFamily: "DM Mono, monospace", color: "white" }}>
+            HOW IT WORKS
+          </span>
+        </div>
         </div>
 
+      <div className="max-w-4xl mx-auto relative z-10 px-4 md:px-0">
         {/* Accordion Steps */}
         <div className="space-y-4">
           {/* Step 1 */}

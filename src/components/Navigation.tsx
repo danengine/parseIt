@@ -8,7 +8,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<"home" | "how-it-works">(
+  const [activeSection, setActiveSection] = useState<"home" | "how-it-works" | "about-us">(
     "home"
   );
 
@@ -20,10 +20,36 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
       const howItWorksSection = document.querySelector(
         '[data-section="how-it-works"]'
       );
-      if (howItWorksSection) {
+      const aboutUsSection = document.querySelector(
+        '[data-section="about-us"]'
+      );
+      
+      // Check sections in order of priority (later sections first)
+      let activeSectionFound = false;
+      
+      // Check About Us section (highest priority - comes last)
+      if (aboutUsSection && !activeSectionFound) {
+        const rect = aboutUsSection.getBoundingClientRect();
+        const isInView = rect.top <= 200 && rect.bottom >= 200;
+        if (isInView) {
+          setActiveSection("about-us");
+          activeSectionFound = true;
+        }
+      }
+      
+      // Check How It Works section (second priority)
+      if (howItWorksSection && !activeSectionFound) {
         const rect = howItWorksSection.getBoundingClientRect();
-        const isInView = rect.top <= 200 && rect.bottom >= 200; // 200px offset for header
-        setActiveSection(isInView ? "how-it-works" : "home");
+        const isInView = rect.top <= 200 && rect.bottom >= 200;
+        if (isInView) {
+          setActiveSection("how-it-works");
+          activeSectionFound = true;
+        }
+      }
+      
+      // Default to home if no section is in view
+      if (!activeSectionFound) {
+        setActiveSection("home");
       }
     };
 
@@ -44,6 +70,19 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
     ) as HTMLElement;
     if (howItWorksSection) {
       const offsetTop = howItWorksSection.offsetTop - 100; // 100px offset for header
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollToAboutUs = () => {
+    const aboutUsSection = document.querySelector(
+      '[data-section="about-us"]'
+    ) as HTMLElement;
+    if (aboutUsSection) {
+      const offsetTop = aboutUsSection.offsetTop - 100; // 100px offset for header
       window.scrollTo({
         top: offsetTop,
         behavior: "smooth",
@@ -99,13 +138,23 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
               ></div>
             )}
           </button>
-          <a
-            href="#"
-            className="text-white hover:text-teal-400 transition-colors"
+          <button
+            onClick={scrollToAboutUs}
+            className={`transition-colors relative ${
+              activeSection === "about-us"
+                ? "text-white font-semibold"
+                : "text-white hover:text-teal-400"
+            }`}
             style={{ fontFamily: "DM Mono, monospace" }}
           >
-            CONTACT
-          </a>
+            ABOUT US
+            {activeSection === "about-us" && (
+              <div
+                className="absolute -bottom-1 left-0 right-0 h-0.5"
+                style={{ backgroundColor: "#14B984" }}
+              ></div>
+            )}
+          </button>
           <button
             onClick={() => setShowModal(true)}
             className={`text-white px-6 py-2 transition-colors ${
@@ -188,13 +237,26 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
                 ></div>
               )}
             </button>
-            <a
-              href="#"
-              className="text-white hover:text-teal-400 transition-colors"
+            <button
+              onClick={() => {
+                scrollToAboutUs();
+                setIsMobileMenuOpen(false);
+              }}
+              className={`text-left transition-colors relative ${
+                activeSection === "about-us"
+                  ? "text-white font-semibold"
+                  : "text-white hover:text-teal-400"
+              }`}
               style={{ fontFamily: "DM Mono, monospace" }}
             >
-              CONTACT
-            </a>
+              ABOUT US
+              {activeSection === "about-us" && (
+                <div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5"
+                  style={{ backgroundColor: "#14B984" }}
+                ></div>
+              )}
+            </button>
             <button
               onClick={() => {
                 setShowModal(true);

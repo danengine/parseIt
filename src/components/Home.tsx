@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FeatureCard from "./FeatureCard";
 import HowItWorks from "./HowItWorks";
+import AboutUs from "./AboutUs";
 
 interface HomeProps {
   onNavigateToParser?: () => void;
@@ -10,6 +11,7 @@ const Home: React.FC<HomeProps> = () => {
   const [showModal, setShowModal] = useState(false);
   const [bgLoaded, setBgLoaded] = useState(false);
   const [isHowItWorksInView, setIsHowItWorksInView] = useState(false);
+  const [isAboutUsInView, setIsAboutUsInView] = useState(false);
 
   useEffect(() => {
     const img = new Image();
@@ -22,6 +24,10 @@ const Home: React.FC<HomeProps> = () => {
       const howItWorksSection = document.querySelector(
         '[data-section="how-it-works"]'
       );
+      const aboutUsSection = document.querySelector(
+        '[data-section="about-us"]'
+      );
+      
       if (howItWorksSection) {
         const rect = howItWorksSection.getBoundingClientRect();
         const isInView = rect.top <= window.innerHeight && rect.bottom >= 0;
@@ -29,11 +35,19 @@ const Home: React.FC<HomeProps> = () => {
           setIsHowItWorksInView(true);
         }
       }
+      
+      if (aboutUsSection) {
+        const rect = aboutUsSection.getBoundingClientRect();
+        const isInView = rect.top <= window.innerHeight && rect.bottom >= 0;
+        if (isInView && !isAboutUsInView) {
+          setIsAboutUsInView(true);
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHowItWorksInView]);
+  }, [isHowItWorksInView, isAboutUsInView]);
   return (
     <div
       className="min-h-screen text-white relative overflow-hidden"
@@ -133,6 +147,7 @@ const Home: React.FC<HomeProps> = () => {
       </section>
 
       <HowItWorks isInView={isHowItWorksInView} />
+      <AboutUs isInView={isAboutUsInView} />
 
       {/* Under Construction Modal */}
       {showModal && (
