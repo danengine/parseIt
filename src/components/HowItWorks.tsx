@@ -157,9 +157,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                 style={{ backgroundColor: "#14B984" }}
               >
                 <p style={{ fontFamily: "DM Mono, monospace" }}>
-                  Type an arithmetic expression into the input box. You may use
-                  numbers, operators (+-*/^), and parentheses (). Whitespace is
-                  optional and will be ignored by the tokenizer.
+                  Type an arithmetic expression or regex pattern into the input box. You may use
+                  numbers (0-9, including decimals), arithmetic operators (+-*/), regex operators 
+                  (| for union, * for Kleene star), characters (a-z), and parentheses (). 
+                  Whitespace is optional and will be ignored by the parser.
                 </p>
               </div>
             )}
@@ -195,7 +196,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
                 }}
               >
-                2. Run the Tokenizer
+                2. Parse the Expression
               </span>
               <span
                 className="text-xl w-8 h-8 rounded-full flex items-center justify-center"
@@ -216,8 +217,9 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                 style={{ backgroundColor: "#14B984" }}
               >
                 <p style={{ fontFamily: "DM Mono, monospace" }}>
-                  Click the Run Tokenizer button. The system will read your
-                  input and break it down into smaller units called tokens.
+                  Click the Check Syntax button. The parser will analyze your
+                  input using the combined arithmetic and regex grammar rules,
+                  building a parse tree that represents the structure of your expression.
                 </p>
               </div>
             )}
@@ -253,7 +255,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
                 }}
               >
-                3. View the Tokens
+                3. View the Parse Tree
               </span>
               <span
                 className="text-xl w-8 h-8 rounded-full flex items-center justify-center"
@@ -274,10 +276,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                 style={{ backgroundColor: "#14B984" }}
               >
                 <p style={{ fontFamily: "DM Mono, monospace" }}>
-                  Each token will be displayed in a table with its lexeme,
-                  category (such as number, operator, or parenthesis), and its
-                  position in the input string. This lets you see how the
-                  tokenizer interprets every part of your expression.
+                  The parse tree visualization shows the hierarchical structure of your expression.
+                  Each node represents a grammar rule application, with children showing how the expression
+                  is broken down. You can see how arithmetic operations (+, -, *, /) and regex operations
+                  (| for union, implicit concatenation, * for Kleene star) are structured according to precedence.
                 </p>
               </div>
             )}
@@ -313,7 +315,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
                 }}
               >
-                4. Check for Validity
+                4. Verify Syntax
               </span>
               <span
                 className="text-xl w-8 h-8 rounded-full flex items-center justify-center"
@@ -334,10 +336,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                 style={{ backgroundColor: "#14B984" }}
               >
                 <p style={{ fontFamily: "DM Mono, monospace" }}>
-                  The tokens are then checked against the grammar rules. A green
-                  banner means your expression is valid, while a red banner
+                  The parser validates your expression against the grammar rules. A green
+                  banner means your expression is syntactically correct, while a red banner
                   means it contains an error. If invalid, the message will point
-                  out where the issue occurred.
+                  out where the parsing failed and what was expected.
                 </p>
               </div>
             )}
@@ -373,7 +375,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
                 }}
               >
-                5. Reveal the Derivation
+                5. Explore the Derivation
               </span>
               <span
                 className="text-xl w-8 h-8 rounded-full flex items-center justify-center"
@@ -395,9 +397,10 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               >
                 <p style={{ fontFamily: "DM Mono, monospace" }}>
                   If the expression is valid, you can expand the Derivation
-                  section to see how the expression is constructed from the
-                  start symbol of the grammar. This shows the grammatical
-                  structure that makes the expression valid.
+                  section to see step-by-step how the parser constructs your expression
+                  from the start symbol. This shows the grammatical transformations
+                  that make your expression valid, including how arithmetic and regex
+                  operations are applied according to precedence rules.
                 </p>
               </div>
             )}

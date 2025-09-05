@@ -1,92 +1,156 @@
 import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 interface NavigationProps {
-  currentView: "home" | "parser" | "math-logic";
+  currentPath: string;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
+const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<"home" | "how-it-works" | "about-us">(
-    "home"
+  const [activeSection, setActiveSection] = useState<"home" | "how-it-works" | "about-us" | null>(
+    currentPath === "/" ? "home" : null
   );
+  const navigate = useNavigate();
+
+  // Update active section immediately when path changes
+  useEffect(() => {
+    if (currentPath === "/") {
+      setActiveSection("home");
+    } else {
+      setActiveSection(null);
+    }
+  }, [currentPath]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Check which section is currently in view
-      const howItWorksSection = document.querySelector(
-        '[data-section="how-it-works"]'
-      );
-      const aboutUsSection = document.querySelector(
-        '[data-section="about-us"]'
-      );
-      
-      // Check sections in order of priority (later sections first)
-      let activeSectionFound = false;
-      
-      // Check About Us section (highest priority - comes last)
-      if (aboutUsSection && !activeSectionFound) {
-        const rect = aboutUsSection.getBoundingClientRect();
-        const isInView = rect.top <= 200 && rect.bottom >= 200;
-        if (isInView) {
-          setActiveSection("about-us");
-          activeSectionFound = true;
+      // Only check sections if we're on the home page
+      if (currentPath === "/") {
+        // Check which section is currently in view
+        const howItWorksSection = document.querySelector(
+          '[data-section="how-it-works"]'
+        );
+        const aboutUsSection = document.querySelector(
+          '[data-section="about-us"]'
+        );
+        
+        // Check sections in order of priority (later sections first)
+        let activeSectionFound = false;
+        
+        // Check About Us section (highest priority - comes last)
+        if (aboutUsSection && !activeSectionFound) {
+          const rect = aboutUsSection.getBoundingClientRect();
+          const isInView = rect.top <= 200 && rect.bottom >= 200;
+          if (isInView) {
+            setActiveSection("about-us");
+            activeSectionFound = true;
+          }
         }
-      }
-      
-      // Check How It Works section (second priority)
-      if (howItWorksSection && !activeSectionFound) {
-        const rect = howItWorksSection.getBoundingClientRect();
-        const isInView = rect.top <= 200 && rect.bottom >= 200;
-        if (isInView) {
-          setActiveSection("how-it-works");
-          activeSectionFound = true;
+        
+        // Check How It Works section (second priority)
+        if (howItWorksSection && !activeSectionFound) {
+          const rect = howItWorksSection.getBoundingClientRect();
+          const isInView = rect.top <= 200 && rect.bottom >= 200;
+          if (isInView) {
+            setActiveSection("how-it-works");
+            activeSectionFound = true;
+          }
         }
-      }
-      
-      // Default to home if no section is in view
-      if (!activeSectionFound) {
-        setActiveSection("home");
+        
+        // Only set to home if we're at the top of the page (within 100px)
+        if (!activeSectionFound && window.scrollY <= 100) {
+          setActiveSection("home");
+        } else if (!activeSectionFound) {
+          // If we're scrolled down but no section is in view, clear active section
+          setActiveSection("home");
+        }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [currentPath]);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToHowItWorks = () => {
-    const howItWorksSection = document.querySelector(
-      '[data-section="how-it-works"]'
-    ) as HTMLElement;
-    if (howItWorksSection) {
-      const offsetTop = howItWorksSection.offsetTop - 100; // 100px offset for header
+    if (currentPath !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, 100);
+    } else {
       window.scrollTo({
-        top: offsetTop,
+        top: 0,
         behavior: "smooth",
       });
     }
   };
 
+  const scrollToHowItWorks = () => {
+    // If not on home page, navigate to home first
+    if (currentPath !== "/") {
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const howItWorksSection = document.querySelector(
+          '[data-section="how-it-works"]'
+        ) as HTMLElement;
+        if (howItWorksSection) {
+          const offsetTop = howItWorksSection.offsetTop - 85;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      const howItWorksSection = document.querySelector(
+        '[data-section="how-it-works"]'
+      ) as HTMLElement;
+      if (howItWorksSection) {
+        const offsetTop = howItWorksSection.offsetTop - 85;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   const scrollToAboutUs = () => {
-    const aboutUsSection = document.querySelector(
-      '[data-section="about-us"]'
-    ) as HTMLElement;
-    if (aboutUsSection) {
-      const offsetTop = aboutUsSection.offsetTop - 100; // 100px offset for header
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
+    // If not on home page, navigate to home first
+    if (currentPath !== "/") {
+      navigate("/");
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const aboutUsSection = document.querySelector(
+          '[data-section="about-us"]'
+        ) as HTMLElement;
+        if (aboutUsSection) {
+          const offsetTop = aboutUsSection.offsetTop;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        }
+      }, 100);
+    } else {
+      // Already on home page, just scroll
+      const aboutUsSection = document.querySelector(
+        '[data-section="about-us"]'
+      ) as HTMLElement;
+      if (aboutUsSection) {
+        const offsetTop = aboutUsSection.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
@@ -155,10 +219,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
               ></div>
             )}
           </button>
-          <button
-            onClick={() => setShowModal(true)}
+          <Link
+            to="/playground"
             className={`text-white px-6 py-2 transition-colors ${
-              currentView === "parser" ? "opacity-90" : ""
+              currentPath === "/playground" ? "opacity-90" : ""
             }`}
             style={{
               fontFamily: "DM Mono, monospace",
@@ -166,7 +230,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
             }}
           >
             PLAYGROUND
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -257,13 +321,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
                 ></div>
               )}
             </button>
-            <button
-              onClick={() => {
-                setShowModal(true);
-                setIsMobileMenuOpen(false);
-              }}
+            <Link
+              to="/playground"
+              onClick={() => setIsMobileMenuOpen(false)}
               className={`text-white px-6 py-2 transition-colors text-left ${
-                currentView === "parser" ? "opacity-90" : ""
+                currentPath === "/playground" ? "opacity-90" : ""
               }`}
               style={{
                 fontFamily: "DM Mono, monospace",
@@ -271,55 +333,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentView }) => {
               }}
             >
               PLAYGROUND
-            </button>
+            </Link>
           </nav>
         </div>
       )}
 
-      {/* Under Construction Modal */}
-      {showModal && (
-        <div
-          className="fixed flex items-center justify-center z-50"
-          style={{
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          <div
-            className="bg-gray-800 p-8 rounded-lg max-w-md mx-4 text-center border"
-            style={{ borderColor: "#666666" }}
-          >
-            <h3
-              className="text-xl font-bold mb-4 text-white"
-              style={{ fontFamily: "DM Mono, monospace" }}
-            >
-              Under Construction
-            </h3>
-            <p
-              className="text-gray-300 mb-6"
-              style={{ fontFamily: "DM Mono, monospace" }}
-            >
-              This feature is currently being developed. Please check back
-              later!
-            </p>
-            <button
-              onClick={() => setShowModal(false)}
-              className="px-6 py-2 text-white transition-colors"
-              style={{
-                fontFamily: "DM Mono, monospace",
-                backgroundColor: "#13B481",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
 import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
 
-interface HomeProps {
-  onNavigateToParser?: () => void;
-}
-
-const Home: React.FC<HomeProps> = () => {
-  const [showModal, setShowModal] = useState(false);
+const Home: React.FC = () => {
+  const navigate = useNavigate();
   const [bgLoaded, setBgLoaded] = useState(false);
   const [isHowItWorksInView, setIsHowItWorksInView] = useState(false);
   const [isAboutUsInView, setIsAboutUsInView] = useState(false);
@@ -111,13 +108,13 @@ const Home: React.FC<HomeProps> = () => {
             className="text-white text-sm md:text-lg font-light mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
-            ANALYZE ARITHMETIC EXPRESSIONS, CONFIRM VALIDITY, AND REVEAL THEIR
+            ANALYZE ARITHMETIC EXPRESSIONS AND REGEX PATTERNS, CONFIRM VALIDITY, AND REVEAL THEIR
             CONSTRUCTION ACCORDING TO CONTEXT-FREE GRAMMAR.
           </p>
 
           {/* Init Parse Button */}
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => navigate("/playground")}
             className="border border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm md:text-base"
             style={{
               fontFamily: "DM Mono, monospace",
@@ -160,51 +157,6 @@ const Home: React.FC<HomeProps> = () => {
 
       <HowItWorks isInView={isHowItWorksInView} />
       <AboutUs isInView={isAboutUsInView} />
-
-      {/* Under Construction Modal */}
-      {showModal && (
-        <div
-          className="fixed flex items-center justify-center z-50"
-          style={{
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            width: "100vw",
-            height: "100vh",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}
-        >
-          <div
-            className="bg-gray-800 p-8 rounded-lg max-w-md mx-4 text-center border"
-            style={{ borderColor: "#666666" }}
-          >
-            <h3
-              className="text-xl font-bold mb-4 text-white"
-              style={{ fontFamily: "DM Mono, monospace" }}
-            >
-              Under Construction
-            </h3>
-            <p
-              className="text-gray-300 mb-6"
-              style={{ fontFamily: "DM Mono, monospace" }}
-            >
-              This feature is currently being developed. Please check back
-              later!
-            </p>
-            <button
-              onClick={() => setShowModal(false)}
-              className="px-6 py-2 text-white transition-colors"
-              style={{
-                fontFamily: "DM Mono, monospace",
-                backgroundColor: "#13B481",
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import Navigation from './components/Navigation'
 import Home from './components/Home'
-import Parser from './components/Parser'
 import MathLogic from './MathLogic'
+import Playground from './components/Playground'
 import Footer from './components/Footer'
 
-function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'parser' | 'math-logic'>('home');
+function AppContent() {
+  const location = useLocation();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -27,27 +28,26 @@ function App() {
     };
   }, []);
 
-  const renderCurrentView = () => {
-    switch (currentView) {
-      case 'home':
-        return <Home onNavigateToParser={() => setCurrentView('parser')} />;
-      case 'parser':
-        return <Parser />;
-      case 'math-logic':
-        return <MathLogic />;
-      default:
-        return <Home onNavigateToParser={() => setCurrentView('parser')} />;
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gray-900 flex flex-col">
-      <Navigation currentView={currentView} />
+      <Navigation currentPath={location.pathname} />
       <main className="flex-1">
-        {renderCurrentView()}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/math-logic" element={<MathLogic />} />
+          <Route path="/playground" element={<Playground />} />
+        </Routes>
       </main>
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   )
 }
 

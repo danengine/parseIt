@@ -1,13 +1,13 @@
 # ParseIt 🚀
 <img width="1832" height="915" alt="image" src="https://github.com/user-attachments/assets/ae450fe3-0133-4011-a3c6-a07882b09b67" />
 
-**ANALYZE ARITHMETIC EXPRESSIONS, CONFIRM VALIDITY, AND REVEAL THEIR CONSTRUCTION ACCORDING TO CONTEXT-FREE GRAMMAR.**
+**ANALYZE ARITHMETIC EXPRESSIONS AND REGEX PATTERNS, CONFIRM VALIDITY, AND REVEAL THEIR CONSTRUCTION ACCORDING TO CONTEXT-FREE GRAMMAR.**
 
-ParseIt is an interactive web application designed to help students and developers understand compiler theory through hands-on parsing of arithmetic expressions. Built with modern web technologies, it provides a visual and intuitive way to explore context-free grammar parsing.
+ParseIt is an interactive web application designed to help students and developers understand compiler theory through hands-on parsing of arithmetic expressions and regex patterns. Built with modern web technologies, it provides a visual and intuitive way to explore context-free grammar parsing with a combined grammar that supports both mathematical operations and regular expression constructs.
 
 ## ✨ Features
 
-- **Interactive Expression Parser**: Input arithmetic expressions and see them parsed in real-time
+- **Interactive Expression Parser**: Input arithmetic expressions and regex patterns, see them parsed in real-time
 - **Visual Parse Trees**: Watch as expressions are broken down into their grammatical components
 - **Grammar Validation**: Confirm whether expressions follow proper context-free grammar rules
 - **Educational Interface**: Clean, intuitive design that makes complex concepts accessible

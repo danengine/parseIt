@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
               className="text-gray-300 text-sm leading-relaxed max-w-md"
               style={{ fontFamily: "DM Mono, monospace" }}
             >
-              ANALYZE ARITHMETIC EXPRESSIONS, CONFIRM VALIDITY, AND REVEAL THEIR CONSTRUCTION ACCORDING TO CONTEXT-FREE GRAMMAR.
+              ANALYZE ARITHMETIC EXPRESSIONS AND REGEX PATTERNS, CONFIRM VALIDITY, AND REVEAL THEIR CONSTRUCTION ACCORDING TO CONTEXT-FREE GRAMMAR.
             </p>
           </div>
 
