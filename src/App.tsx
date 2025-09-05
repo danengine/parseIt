@@ -5,6 +5,7 @@ import Navigation from './components/Navigation'
 import Home from './components/Home'
 import MathLogic from './MathLogic'
 import Playground from './components/Playground'
+import NotFound from './components/NotFound'
 import Footer from './components/Footer'
 
 function AppContent() {
@@ -36,6 +37,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/math-logic" element={<MathLogic />} />
           <Route path="/playground" element={<Playground />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
