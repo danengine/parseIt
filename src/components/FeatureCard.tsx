@@ -30,14 +30,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       </div>
       
       {/* Text Content */}
-      <div className="p-8">
+      <div className="p-3 md:p-8">
         {/* Title */}
-        <h3 className="text-xl font-bold mb-4 text-center" style={{ color: '#14B984', fontFamily: 'DM Mono, monospace' }}>
+        <h3 className="text-base md:text-xl font-bold mb-2 md:mb-4 text-center" style={{ color: '#14B984', fontFamily: 'DM Mono, monospace' }}>
           {title}
         </h3>
         
         {/* Description */}
-        <p className="text-white text-sm leading-relaxed text-center" style={{ fontFamily: 'DM Mono, monospace' }}>
+        <p className="text-white text-xs md:text-sm leading-relaxed text-center" style={{ fontFamily: 'DM Mono, monospace' }}>
           {description}
         </p>
       </div>

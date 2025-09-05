@@ -44,7 +44,7 @@ const Home: React.FC<HomeProps> = () => {
         className="absolute inset-0"
         style={{
           backgroundImage: bgLoaded ? "url(/bg.png)" : "none",
-          backgroundSize: "contain",
+          backgroundSize: "auto",
           backgroundPosition: "center top",
           backgroundRepeat: "repeat",
           opacity: bgLoaded ? 0.4 : 0,
@@ -53,7 +53,7 @@ const Home: React.FC<HomeProps> = () => {
       ></div>
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-6 pt-16">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 md:px-6 pt-12 md:pt-16">
         <div className="text-center max-w-4xl">
           {/* Grammar-Based Tokenizer Label */}
           <div
@@ -73,7 +73,7 @@ const Home: React.FC<HomeProps> = () => {
 
           {/* ParseIt Title */}
           <h1
-            className="text-6xl md:text-7xl font-bold mb-6 italic"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 italic"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
             <span style={{ color: "#14B984" }}>Parse</span>
@@ -82,7 +82,7 @@ const Home: React.FC<HomeProps> = () => {
 
           {/* Description */}
           <p
-            className="text-white text-lg font-light mb-8 leading-relaxed max-w-2xl mx-auto"
+            className="text-white text-sm md:text-lg font-light mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
             ANALYZE ARITHMETIC EXPRESSIONS, CONFIRM VALIDITY, AND REVEAL THEIR
@@ -92,7 +92,7 @@ const Home: React.FC<HomeProps> = () => {
           {/* Init Parse Button */}
           <button
             onClick={() => setShowModal(true)}
-            className="border border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300"
+            className="border border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-white hover:text-gray-900 transition-all duration-300 text-sm md:text-base"
             style={{
               fontFamily: "DM Mono, monospace",
               boxShadow: "0 6px 12px rgba(20, 185, 132, 0.35)",
@@ -104,8 +104,8 @@ const Home: React.FC<HomeProps> = () => {
       </main>
 
       {/* Feature Cards */}
-      <section className="relative z-10 px-6 pb-12">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+      <section className="relative z-10 px-4 md:px-6 pb-8 md:pb-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           <FeatureCard
             imageSrc="/cfg.png"
             imageAlt="CFG-Based Tokenization"

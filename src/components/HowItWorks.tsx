@@ -15,20 +15,20 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
   }, [isInView, activeAccordion]);
 
   return (
-    <section className="relative z-10 py-16 mt-40" data-section="how-it-works">
+    <section className="relative z-10 py-8 md:py-16 mt-20 md:mt-40 px-4 md:px-0" data-section="how-it-works">
       {/* Angular Background */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage: "url(/angular.png)",
-          backgroundSize: "150%",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           opacity: 1,
         }}
       ></div>
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-4xl mx-auto relative z-10 px-4 md:px-0">
         {/* Marquee Header */}
         <div
           className={`overflow-hidden mb-12 ${
@@ -39,19 +39,19 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           <div className="flex animate-marquee whitespace-nowrap">
             {/* First set */}
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8 px-4 py-2"
+              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
               style={{
                 fontFamily: "DM Mono, monospace",
                 backgroundColor: "#14B984",
@@ -61,50 +61,50 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
             </span>
             {/* Duplicate set for seamless loop */}
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8 px-4 py-2"
+              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8 px-2 md:px-4 py-1 md:py-2"
               style={{
                 fontFamily: "DM Mono, monospace",
                 backgroundColor: "#14B984",
@@ -114,25 +114,25 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               •
             </span>
             <span
-              className="text-4xl font-bold mr-8"
+                              className="text-2xl md:text-4xl font-bold mr-4 md:mr-8"
               style={{ fontFamily: "DM Mono, monospace", color: "white" }}
             >
               HOW IT WORKS
@@ -153,7 +153,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               onClick={() =>
                 setActiveAccordion(activeAccordion === 1 ? null : 1)
               }
-              className={`w-full px-6 py-4 text-left flex justify-between items-center transition-all duration-300 ${
+              className={`w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center transition-all duration-300 ${
                 activeAccordion === 1
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
@@ -166,7 +166,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               }}
             >
               <span
-                className="text-lg font-semibold"
+                className="text-base md:text-lg font-semibold"
                 style={{
                   color: activeAccordion === 1 ? "white" : "#d1d5db",
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
@@ -187,7 +187,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             </button>
             {activeAccordion === 1 && (
               <div
-                className={`px-6 py-4 text-white ${
+                className={`px-4 md:px-6 py-3 md:py-4 text-white ${
                   isInView ? "animate-fade-in" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
@@ -212,7 +212,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               onClick={() =>
                 setActiveAccordion(activeAccordion === 2 ? null : 2)
               }
-              className={`w-full px-6 py-4 text-left flex justify-between items-center transition-all duration-300 ${
+              className={`w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center transition-all duration-300 ${
                 activeAccordion === 2
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
@@ -225,7 +225,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               }}
             >
               <span
-                className="text-lg font-semibold"
+                className="text-base md:text-lg font-semibold"
                 style={{
                   color: activeAccordion === 2 ? "white" : "#d1d5db",
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
@@ -246,7 +246,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             </button>
             {activeAccordion === 2 && (
               <div
-                className={`px-6 py-4 text-white ${
+                className={`px-4 md:px-6 py-3 md:py-4 text-white ${
                   isInView ? "animate-fade-in" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
@@ -270,7 +270,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               onClick={() =>
                 setActiveAccordion(activeAccordion === 3 ? null : 3)
               }
-              className={`w-full px-6 py-4 text-left flex justify-between items-center transition-all duration-300 ${
+              className={`w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center transition-all duration-300 ${
                 activeAccordion === 3
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
@@ -283,7 +283,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               }}
             >
               <span
-                className="text-lg font-semibold"
+                className="text-base md:text-lg font-semibold"
                 style={{
                   color: activeAccordion === 3 ? "white" : "#d1d5db",
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
@@ -304,7 +304,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             </button>
             {activeAccordion === 3 && (
               <div
-                className={`px-6 py-4 text-white ${
+                className={`px-4 md:px-6 py-3 md:py-4 text-white ${
                   isInView ? "animate-fade-in" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
@@ -330,7 +330,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               onClick={() =>
                 setActiveAccordion(activeAccordion === 4 ? null : 4)
               }
-              className={`w-full px-6 py-4 text-left flex justify-between items-center transition-all duration-300 ${
+              className={`w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center transition-all duration-300 ${
                 activeAccordion === 4
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
@@ -343,7 +343,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               }}
             >
               <span
-                className="text-lg font-semibold"
+                className="text-base md:text-lg font-semibold"
                 style={{
                   color: activeAccordion === 4 ? "white" : "#d1d5db",
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
@@ -364,7 +364,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             </button>
             {activeAccordion === 4 && (
               <div
-                className={`px-6 py-4 text-white ${
+                className={`px-4 md:px-6 py-3 md:py-4 text-white ${
                   isInView ? "animate-fade-in" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
@@ -390,7 +390,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               onClick={() =>
                 setActiveAccordion(activeAccordion === 5 ? null : 5)
               }
-              className={`w-full px-6 py-4 text-left flex justify-between items-center transition-all duration-300 ${
+              className={`w-full px-4 md:px-6 py-3 md:py-4 text-left flex justify-between items-center transition-all duration-300 ${
                 activeAccordion === 5
                   ? "text-white"
                   : "text-gray-300 hover:text-white"
@@ -403,7 +403,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
               }}
             >
               <span
-                className="text-lg font-semibold"
+                className="text-base md:text-lg font-semibold"
                 style={{
                   color: activeAccordion === 5 ? "white" : "#d1d5db",
                   transition: isInView ? "color 0.3s ease-in-out" : "none",
@@ -424,7 +424,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             </button>
             {activeAccordion === 5 && (
               <div
-                className={`px-6 py-4 text-white ${
+                className={`px-4 md:px-6 py-3 md:py-4 text-white ${
                   isInView ? "animate-fade-in" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
