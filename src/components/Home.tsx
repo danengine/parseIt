@@ -33,7 +33,7 @@ const Home: React.FC<HomeProps> = () => {
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-6 pt-16">
         <div className="text-center max-w-4xl">
                            {/* Grammar-Based Tokenizer Label */}
-                 <div className="inline-block px-4 py-2 rounded mb-6" style={{ background: 'linear-gradient(135deg, rgba(20, 185, 132, 0.6), rgba(13, 148, 136, 0.6))' }}>
+                 <div className="inline-block px-3 py-1 mb-6" style={{ background: 'linear-gradient(135deg, rgba(20, 185, 132, 0.3), rgba(13, 148, 136, 0.3))' }}>
                    <p className="text-white text-sm font-light" style={{ fontFamily: 'DM Mono, monospace' }}>Grammar-Based Tokenizer</p>
                  </div>
           
