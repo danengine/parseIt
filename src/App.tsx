@@ -4,6 +4,7 @@ import Navigation from './components/Navigation'
 import Home from './components/Home'
 import Parser from './components/Parser'
 import MathLogic from './MathLogic'
+import Footer from './components/Footer'
 
 function App() {
   const [currentView, setCurrentView] = useState<'home' | 'parser' | 'math-logic'>('home');
@@ -40,9 +41,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 flex flex-col">
       <Navigation currentView={currentView} />
-      {renderCurrentView()}
+      <main className="flex-1">
+        {renderCurrentView()}
+      </main>
+      <Footer />
     </div>
   )
 }
