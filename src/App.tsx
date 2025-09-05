@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900">
-      <Navigation currentView={currentView} onViewChange={setCurrentView} />
+      <Navigation currentView={currentView} />
       {renderCurrentView()}
     </div>
   )
