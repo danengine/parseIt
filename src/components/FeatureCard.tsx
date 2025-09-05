@@ -25,7 +25,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = '0 8px 25px rgba(20, 185, 132, 0.4), 0 0 20px rgba(20, 185, 132, 0.3)';
+        e.currentTarget.style.boxShadow = '0 6px 15px rgba(20, 185, 132, 0.25), 0 0 10px rgba(20, 185, 132, 0.15)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';

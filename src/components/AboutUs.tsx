@@ -53,6 +53,19 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,1) 100%)",
         }}
       ></div>
+      {/* Mobile-specific pattern overlay */}
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          backgroundImage: "url(/bg.png)",
+          backgroundSize: "250px 250px",
+          backgroundPosition: "center",
+          backgroundRepeat: "repeat",
+          opacity: 0.6,
+          maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.8) 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.8) 100%)",
+        }}
+      ></div>
 
       <div className="max-w-6xl mx-auto relative z-10 px-4 md:px-0">
         {/* Section Header */}

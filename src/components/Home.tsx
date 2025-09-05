@@ -65,6 +65,18 @@ const Home: React.FC<HomeProps> = () => {
           height: "calc(100vh + 400px)", // Extend to cover feature cards
         }}
       ></div>
+      {/* Mobile-specific pattern overlay */}
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          backgroundImage: bgLoaded ? "url(/bg.png)" : "none",
+          backgroundSize: "300px 300px",
+          backgroundPosition: "center top",
+          backgroundRepeat: "repeat",
+          opacity: bgLoaded ? 0.5 : 0,
+          height: "calc(100vh + 400px)",
+        }}
+      ></div>
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[70vh] px-4 md:px-6 pt-12 md:pt-16">
