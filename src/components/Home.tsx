@@ -5,7 +5,7 @@ interface HomeProps {
   onNavigateToParser?: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ onNavigateToParser }) => {
+const Home: React.FC<HomeProps> = () => {
   const [showModal, setShowModal] = useState(false);
   const [bgLoaded, setBgLoaded] = useState(false);
 
