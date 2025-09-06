@@ -50,3 +50,21 @@ body {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* DecryptedText styles */
+.revealed {
+  color: inherit; /* Will be overridden by color classes */
+}
+
+.encrypted {
+  color: #666; /* Gray for scrambled text */
+}
+
+/* Color classes based on original position */
+.parse-color {
+  color: #14B984 !important; /* Green for "Parse" characters */
+}
+
+.it-color {
+  color: white !important; /* White for "It." characters */
+}

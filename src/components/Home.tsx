@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
 import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
+import DecryptedText from "./UI/DecryptedText";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -87,7 +88,7 @@ const Home: React.FC = () => {
             }}
           >
             <p
-              className="text-white text-sm font-light"
+              className="text-white text-base md:text-sm font-light"
               style={{ fontFamily: "DM Mono, monospace" }}
             >
               Grammar-Based Tokenizer
@@ -96,16 +97,25 @@ const Home: React.FC = () => {
 
           {/* ParseIt Title */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 italic"
+            className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 italic"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
-            <span style={{ color: "#14B984" }}>Parse</span>
-            <span className="text-white">It.</span>
+            <DecryptedText
+              text="ParseIt."
+              speed={10}
+              maxIterations={60}
+              characters="ParseIt."
+              className="revealed"
+              parentClassName="all-letters"
+              encryptedClassName="encrypted"
+              animateOn="view"
+              revealDirection="center"
+            />
           </h1>
 
           {/* Description */}
           <p
-            className="text-white text-sm md:text-lg font-light mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
+            className="text-white text-base md:text-lg font-light mb-6 md:mb-8 leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
             ANALYZE ARITHMETIC EXPRESSIONS AND REGEX PATTERNS, CONFIRM VALIDITY, AND REVEAL THEIR
