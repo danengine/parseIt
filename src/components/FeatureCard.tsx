@@ -17,7 +17,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 }) => {
   return (
     <div 
-      className="text-white relative overflow-hidden border animate-fade-in-up transition-all duration-300 ease-in-out hover:scale-105 hover:border-green-400 hover:bg-gray-800 cursor-pointer" 
+      className="text-white relative overflow-hidden border animate-fade-in-up animate transition-all duration-300 ease-in-out hover:scale-105 hover:border-green-400 hover:bg-gray-800 cursor-pointer" 
       style={{ 
         backgroundColor: '#1a1a1a', 
         borderColor: '#666666',

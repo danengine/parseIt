@@ -19,8 +19,12 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
+  transform: translateY(30px);
+}
+
+.animate-fade-in-up.animate {
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 @keyframes marquee {
@@ -48,6 +52,11 @@ body {
 }
 
 .animate-fade-in {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.animate-fade-in.animate {
   animation: fadeIn 0.3s ease-out forwards;
 }
 

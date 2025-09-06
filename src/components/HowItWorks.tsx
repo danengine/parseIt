@@ -33,7 +33,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
       {/* Marquee Header - Full Width */}
       <div
         className={`overflow-hidden mb-12 ${
-          isInView ? "animate-fade-in" : "opacity-0"
+          isInView ? "animate-fade-in animate" : "opacity-0"
         }`}
         style={{ animationDelay: "0.2s" }}
       >
@@ -109,7 +109,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           {/* Step 1 */}
           <div
             className={`border border-gray-600 overflow-hidden ${
-              isInView ? "animate-fade-in-up" : "opacity-0"
+              isInView ? "animate-fade-in-up animate" : "opacity-0"
             }`}
             style={{ animationDelay: "0.4s" }}
           >
@@ -152,7 +152,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             {activeAccordion === 1 && (
               <div
                 className={`px-4 md:px-6 py-3 md:py-4 text-white ${
-                  isInView ? "animate-fade-in" : ""
+                  isInView ? "animate-fade-in animate" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
               >
@@ -169,7 +169,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           {/* Step 2 */}
           <div
             className={`border border-gray-600 overflow-hidden ${
-              isInView ? "animate-fade-in-up" : "opacity-0"
+              isInView ? "animate-fade-in-up animate" : "opacity-0"
             }`}
             style={{ animationDelay: "0.6s" }}
           >
@@ -212,7 +212,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             {activeAccordion === 2 && (
               <div
                 className={`px-4 md:px-6 py-3 md:py-4 text-white ${
-                  isInView ? "animate-fade-in" : ""
+                  isInView ? "animate-fade-in animate" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
               >
@@ -228,7 +228,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           {/* Step 3 */}
           <div
             className={`border border-gray-600 overflow-hidden ${
-              isInView ? "animate-fade-in-up" : "opacity-0"
+              isInView ? "animate-fade-in-up animate" : "opacity-0"
             }`}
             style={{ animationDelay: "0.8s" }}
           >
@@ -271,7 +271,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             {activeAccordion === 3 && (
               <div
                 className={`px-4 md:px-6 py-3 md:py-4 text-white ${
-                  isInView ? "animate-fade-in" : ""
+                  isInView ? "animate-fade-in animate" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
               >
@@ -288,7 +288,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           {/* Step 4 */}
           <div
             className={`border border-gray-600 overflow-hidden ${
-              isInView ? "animate-fade-in-up" : "opacity-0"
+              isInView ? "animate-fade-in-up animate" : "opacity-0"
             }`}
             style={{ animationDelay: "1.0s" }}
           >
@@ -331,7 +331,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             {activeAccordion === 4 && (
               <div
                 className={`px-4 md:px-6 py-3 md:py-4 text-white ${
-                  isInView ? "animate-fade-in" : ""
+                  isInView ? "animate-fade-in animate" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
               >
@@ -348,7 +348,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
           {/* Step 5 */}
           <div
             className={`border border-gray-600 overflow-hidden ${
-              isInView ? "animate-fade-in-up" : "opacity-0"
+              isInView ? "animate-fade-in-up animate" : "opacity-0"
             }`}
             style={{ animationDelay: "1.2s" }}
           >
@@ -391,7 +391,7 @@ const HowItWorks: React.FC<HowItWorksProps> = ({ isInView }) => {
             {activeAccordion === 5 && (
               <div
                 className={`px-4 md:px-6 py-3 md:py-4 text-white ${
-                  isInView ? "animate-fade-in" : ""
+                  isInView ? "animate-fade-in animate" : ""
                 }`}
                 style={{ backgroundColor: "#14B984" }}
               >

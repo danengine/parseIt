@@ -163,7 +163,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentPath }) => {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <img src="/logo.svg" alt="ParseIt Logo" className="w-8 h-8" />
+          <button onClick={scrollToTop} className="cursor-pointer">
+            <img src="/logo.svg" alt="ParseIt Logo" className="w-8 h-8" />
+          </button>
         </div>
 
         {/* Desktop Navigation */}

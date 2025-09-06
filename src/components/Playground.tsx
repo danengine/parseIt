@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { checkSyntax } from "../Parser";
+import { checkSyntax } from "../lib/Parser";
 
 interface ParseTreeNodeProps {
   node: any;
@@ -128,14 +128,27 @@ const Playground: React.FC = () => {
 
   return (
     <div className="min-h-screen text-white pt-20 md:pt-32 pb-20 px-4 md:px-6 relative" style={{ backgroundColor: "#131415" }}>
-      {/* Simple Background Pattern */}
+      {/* Desktop Background Pattern */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 md:block hidden"
         style={{
           backgroundImage: "url(/bg.png)",
           backgroundSize: "auto",
           backgroundPosition: "center top",
-          backgroundRepeat: "repeat"
+          backgroundRepeat: "repeat",
+          opacity: 1
+        }}
+      ></div>
+      
+      {/* Mobile Background Pattern */}
+      <div 
+        className="absolute inset-0 md:hidden"
+        style={{
+          backgroundImage: "url(/bg.png)",
+          backgroundSize: "600px 600px",
+          backgroundPosition: "center top",
+          backgroundRepeat: "repeat",
+          opacity: 1
         }}
       ></div>
       

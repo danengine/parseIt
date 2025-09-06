@@ -51,15 +51,15 @@ const Home: React.FC = () => {
       className="min-h-screen text-white relative overflow-hidden"
       style={{ backgroundColor: "#131415" }}
     >
-      {/* Background Pattern for ParseIt Area (up to feature cards) */}
+      {/* Desktop Background Pattern for ParseIt Area (up to feature cards) */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 md:block hidden"
         style={{
           backgroundImage: bgLoaded ? "url(/bg.png)" : "none",
           backgroundSize: "auto",
           backgroundPosition: "center top",
           backgroundRepeat: "repeat",
-          opacity: bgLoaded ? 0.4 : 0,
+          opacity: bgLoaded ? 1 : 0,
           height: "calc(100vh + 400px)", // Extend to cover feature cards
         }}
       ></div>
@@ -68,10 +68,10 @@ const Home: React.FC = () => {
         className="absolute inset-0 md:hidden"
         style={{
           backgroundImage: bgLoaded ? "url(/bg.png)" : "none",
-          backgroundSize: "300px 300px",
+          backgroundSize: "600px 600px",
           backgroundPosition: "center top",
           backgroundRepeat: "repeat",
-          opacity: bgLoaded ? 0.5 : 0,
+          opacity: bgLoaded ? 1 : 0,
           height: "calc(100vh + 400px)",
         }}
       ></div>

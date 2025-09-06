@@ -41,9 +41,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
 
   return (
     <section className="relative z-10 py-8 md:py-16 mt-0 px-4 md:px-0" data-section="about-us">
-      {/* Background Pattern with Gradient Opacity */}
+      {/* Desktop Background Pattern with Gradient Opacity */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 md:block hidden"
         style={{
           backgroundImage: "url(/bg.png)",
           backgroundSize: "cover",
@@ -58,10 +58,10 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
         className="absolute inset-0 md:hidden"
         style={{
           backgroundImage: "url(/bg.png)",
-          backgroundSize: "250px 250px",
+          backgroundSize: "600px 600px",
           backgroundPosition: "center",
           backgroundRepeat: "repeat",
-          opacity: 0.6,
+          opacity: 1,
           maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.8) 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 15%, rgba(0,0,0,0.8) 100%)",
         }}
@@ -71,7 +71,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
         {/* Section Header */}
         <div
           className={`text-center mb-16 ${
-            isInView ? "animate-fade-in" : "opacity-0"
+            isInView ? "animate-fade-in animate" : "opacity-0"
           }`}
           style={{ animationDelay: "0.2s" }}
         >
@@ -95,7 +95,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
             <div
               key={dev.name}
               className={`text-center h-[500px] flex flex-col ${
-                isInView ? "animate-fade-in-up" : "opacity-0"
+                isInView ? "animate-fade-in-up animate" : "opacity-0"
               }`}
               style={{ animationDelay: `${0.4 + index * 0.2}s` }}
             >
