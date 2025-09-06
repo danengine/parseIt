@@ -1,3 +1,8 @@
+/**
+ * Parser for arithmetic expressions and regex patterns
+ * Author: Danilo Eslawan
+ */
+
 interface ParseNode {
   type: string;
   value: string;
