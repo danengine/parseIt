@@ -146,7 +146,8 @@ export class Parser {
     
     const baseNode = this.base();
     
-    if (this.peek() === "*") {
+    // Only allow Kleene star on characters, not numbers
+    if (this.peek() === "*" && this.isCharNode(baseNode)) {
       this.consume();
       
       const repetitionNode = this.createParseNode(
@@ -240,6 +241,11 @@ export class Parser {
 
   private isChar(char: string): boolean {
     return /[a-z]/.test(char);
+  }
+
+  private isCharNode(node: ParseNode): boolean {
+    // Check if the node represents a single character
+    return node.type === "char" || (node.type === "base" && node.children.length === 0 && this.isChar(node.value));
   }
 
   private addDerivation(rule: string, input: string, step: number = 0) {

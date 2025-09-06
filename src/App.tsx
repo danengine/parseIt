@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Lenis from 'lenis'
 import Navigation from './components/Navigation'
 import Home from './components/Home'
-import MathLogic from './MathLogic'
 import Playground from './components/Playground'
 import NotFound from './components/NotFound'
 import Footer from './components/Footer'
@@ -35,7 +34,6 @@ function AppContent() {
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/math-logic" element={<MathLogic />} />
           <Route path="/playground" element={<Playground />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

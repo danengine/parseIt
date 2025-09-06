@@ -31,8 +31,8 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
     },
     {
       name: "Julliana Onor",
-      role: "Grammar",
-      bio: "Computer science graduate specializing in formal language theory and parsing techniques. Enjoys breaking down complex algorithms into understandable components.",
+      role: "Grammar Specialist",
+      bio: "Computer science student specializing in formal language theory and parsing techniques. Enjoys breaking down complex algorithms into understandable components.",
       github: "#",
       linkedin: "#",
       avatar: "../developers/julliana.jpg"
@@ -85,7 +85,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ isInView }) => {
             className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
             style={{ fontFamily: "DM Mono, monospace" }}
           >
-            Meet the team behind ParseIt. We're passionate about making compiler theory accessible through interactive learning tools.
+            Meet the team behind ParseIt. This project is developed for CS121 course compliance.
           </p>
         </div>
 

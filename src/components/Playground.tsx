@@ -82,6 +82,9 @@ const Playground: React.FC = () => {
   const [isResultsVisible, setIsResultsVisible] = useState(false);
 
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
     // Staggered animations for different sections
     const headerTimer = setTimeout(() => setIsHeaderVisible(true), 200);
     const inputTimer = setTimeout(() => setIsInputVisible(true), 400);
