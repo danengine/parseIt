@@ -103,7 +103,7 @@ const Home: React.FC = () => {
             <DecryptedText
               text="ParseIt."
               speed={10}
-              maxIterations={60}
+              maxIterations={40}
               characters="ParseIt."
               className="revealed"
               parentClassName="all-letters"
